@@ -12,6 +12,8 @@
 		1263A872220BB0BF00B8CF83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1263A871220BB0BF00B8CF83 /* Assets.xcassets */; };
 		1263A875220BB0BF00B8CF83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1263A873220BB0BF00B8CF83 /* LaunchScreen.storyboard */; };
 		1263A882220BB94B00B8CF83 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1263A881220BB94B00B8CF83 /* HomeViewController.swift */; };
+		1263A884220BBA0F00B8CF83 /* UpcomingMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1263A883220BBA0F00B8CF83 /* UpcomingMovies.swift */; };
+		1263A886220BBA1C00B8CF83 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1263A885220BBA1C00B8CF83 /* Movie.swift */; };
 		46DA8B6C746AF36AD55C97EC /* Pods_UpcomingMovies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB1F876A383D91CBB8E2F37 /* Pods_UpcomingMovies.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		1263A874220BB0BF00B8CF83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1263A876220BB0BF00B8CF83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1263A881220BB94B00B8CF83 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1263A883220BBA0F00B8CF83 /* UpcomingMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovies.swift; sourceTree = "<group>"; };
+		1263A885220BBA1C00B8CF83 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		CB24DF11976D117DBC316610 /* Pods-UpcomingMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UpcomingMovies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UpcomingMovies/Pods-UpcomingMovies.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +89,8 @@
 		1263A87D220BB8B200B8CF83 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1263A883220BBA0F00B8CF83 /* UpcomingMovies.swift */,
+				1263A885220BBA1C00B8CF83 /* Movie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,6 +259,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1263A86B220BB0BE00B8CF83 /* AppDelegate.swift in Sources */,
+				1263A884220BBA0F00B8CF83 /* UpcomingMovies.swift in Sources */,
+				1263A886220BBA1C00B8CF83 /* Movie.swift in Sources */,
 				1263A882220BB94B00B8CF83 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
