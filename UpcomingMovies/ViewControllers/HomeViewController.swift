@@ -13,18 +13,22 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Testing... \o/
+        
+        APIProvider.getUpcomingMovies(page: 1) { (results) in
+            print("UPCOMING MOVIES (FIRST)")
+            print("Title: \(results.results?.first?.title ?? "No title")")
+            print("Id: \(results.results?.first?.id ?? 0)")
+            print("Gender Ids: \(results.results?.first?.genreIds ?? [])")
+        }
+        
+        APIProvider.getMovieDetailsWithCredits(id: 522681) { (results) in
+            print("SINGLE MOVIE")
+            print("Title: \(results.title ?? "No title")")
+            print("Id: \(results.id ?? 0)")
+            print("Gender Ids: \(results.genres ?? [])")
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
