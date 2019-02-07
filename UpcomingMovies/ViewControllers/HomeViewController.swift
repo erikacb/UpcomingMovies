@@ -8,19 +8,29 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var homeTableView: UITableView!
+    var movies = [Movie]()
+    let loading = UIActivityIndicatorView(style: .whiteLarge)
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.showLoading()
+        APIProvider.getUpcomingMovies(page: 1) { (results) in
+            self.movies = results.results ?? []
+            DispatchQueue.main.async {
+                self.homeTableView.reloadData()
+            }
+            self.hideLoading()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Testing... \o/
+        self.homeTableView.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
+        self.homeTableView.separatorStyle = .none
         
-        APIProvider.getUpcomingMovies(page: 1) { (results) in
-            print("UPCOMING MOVIES (FIRST)")
-            print("Title: \(results.results?.first?.title ?? "No title")")
-            print("Id: \(results.results?.first?.id ?? 0)")
-            print("Gender Ids: \(results.results?.first?.genreIds ?? [])")
-        }
+        // Testing... \o/
         
         APIProvider.getMovieDetailsWithCredits(id: 522681) { (results) in
             print("SINGLE MOVIE")
@@ -29,6 +39,41 @@ class HomeViewController: UIViewController {
             print("Gender Ids: \(results.genres ?? [])")
         }
         
+    }
+    
+    // MARK: - UITableView Methods
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.movies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.homeTableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
+        cell.setup(with: self.movies[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 225
+    }
+    
+    // MARK: - UIView Helpers
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        DispatchQueue.main.async {
+            self.homeTableView.reloadData()
+        }
+    }
+    
+    func showLoading() {
+        self.loading.center = self.view.center
+        self.loading.frame = self.view.bounds
+        self.loading.startAnimating()
+        self.view.addSubview(self.loading)
+    }
+    
+    func hideLoading() {
+        self.loading.removeFromSuperview()
     }
     
 }

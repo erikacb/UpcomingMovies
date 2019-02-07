@@ -20,10 +20,14 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i0h-LN-pyN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="7el-zj-Syl"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="pBB-Er-TPB"/>
+                                </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="i0h-LN-pyN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uxm-KJ-LjT"/>
                             <constraint firstItem="i0h-LN-pyN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="w6H-f9-4vp"/>
@@ -34,6 +38,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Upcoming Movies" id="8Du-tE-ocu"/>
                     <connections>
+                        <outlet property="homeTableView" destination="i0h-LN-pyN" id="bLt-iW-o5z"/>
                         <segue destination="KTg-rg-PeX" kind="show" identifier="showMovieDetails" id="ZtA-ca-Bu5"/>
                     </connections>
                 </viewController>
