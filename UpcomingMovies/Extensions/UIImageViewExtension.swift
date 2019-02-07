@@ -21,12 +21,18 @@ extension UIImageView {
     
         switch imageType {
         case .backdrop: url += "w780" + urlString
-        case .poster: url += "w780" + urlString
+        case .poster: url += "w300" + urlString
         }
         
-        self.sd_setImage(with: URL(string: url)) { (image, error, cacheType, url) in
-            self.setNeedsLayout()
+        if urlString != "" {
+            self.sd_setImage(with: URL(string: url)) { (image, error, cacheType, url) in
+                self.setNeedsLayout()
+            }
+        } else {
+            self.image = nil
+            self.image = UIImage(named: "movie_placeholder")
         }
+        
     }
     
 }

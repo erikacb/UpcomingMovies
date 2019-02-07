@@ -24,7 +24,7 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func setup(with movie: Movie) {
-        self.posterImageView.load(.poster, from: movie.posterPath!)
+        self.posterImageView.load(.poster, from: movie.posterPath ?? "")
         self.movieTitleLabel.text = movie.title ?? "No title available"
         self.releaseDateLabel.text = self.convertDate(movie.releaseDate ?? "")
     }

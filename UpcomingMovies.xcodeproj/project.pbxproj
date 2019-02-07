@@ -23,6 +23,7 @@
 		1263A895220BC21C00B8CF83 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1263A893220BC21C00B8CF83 /* HomeTableViewCell.swift */; };
 		1263A896220BC21C00B8CF83 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1263A894220BC21C00B8CF83 /* HomeTableViewCell.xib */; };
 		1263A898220BC2E000B8CF83 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1263A897220BC2E000B8CF83 /* UIImageViewExtension.swift */; };
+		12A8EF2D220CF33F00640D0A /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8EF2C220CF33F00640D0A /* NetworkState.swift */; };
 		46DA8B6C746AF36AD55C97EC /* Pods_UpcomingMovies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB1F876A383D91CBB8E2F37 /* Pods_UpcomingMovies.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		1263A893220BC21C00B8CF83 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		1263A894220BC21C00B8CF83 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		1263A897220BC2E000B8CF83 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		12A8EF2C220CF33F00640D0A /* NetworkState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
 		CB24DF11976D117DBC316610 /* Pods-UpcomingMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UpcomingMovies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UpcomingMovies/Pods-UpcomingMovies.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 			children = (
 				1263A88F220BBE8400B8CF83 /* APIService.swift */,
 				1263A891220BBEFC00B8CF83 /* APIProvider.swift */,
+				12A8EF2C220CF33F00640D0A /* NetworkState.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12A8EF2D220CF33F00640D0A /* NetworkState.swift in Sources */,
 				1263A88A220BBDA800B8CF83 /* Credits.swift in Sources */,
 				1263A86B220BB0BE00B8CF83 /* AppDelegate.swift in Sources */,
 				1263A898220BC2E000B8CF83 /* UIImageViewExtension.swift in Sources */,
