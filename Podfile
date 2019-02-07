@@ -6,6 +6,7 @@ target 'UpcomingMovies' do
   use_frameworks!
 
   # Pods for UpcomingMovies
-  pod 'Moya', '~> 12.0'  
+  pod 'Moya', '~> 12.0'
+  pod 'SDWebImage', '~> 4.0'
 
 end
