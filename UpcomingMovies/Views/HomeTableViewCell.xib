@@ -25,17 +25,37 @@
                             <constraint firstAttribute="width" constant="150" id="Zot-e9-llN"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDc-hx-ldx">
+                        <rect key="frame" x="158" y="8" width="191" height="25.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dd/mm/aaaa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2j-R2-FlM">
+                        <rect key="frame" x="158" y="37.5" width="191" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ojA-HT-N0D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1yQ-NK-5Mh"/>
+                    <constraint firstAttribute="trailing" secondItem="SDc-hx-ldx" secondAttribute="trailing" constant="8" id="5aU-Lv-rmu"/>
                     <constraint firstItem="ojA-HT-N0D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="9lI-k9-HP3"/>
+                    <constraint firstItem="SDc-hx-ldx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="E0T-U5-Fgv"/>
+                    <constraint firstItem="E2j-R2-FlM" firstAttribute="leading" secondItem="ojA-HT-N0D" secondAttribute="trailing" constant="8" id="E7b-qg-FCP"/>
                     <constraint firstAttribute="bottom" secondItem="ojA-HT-N0D" secondAttribute="bottom" id="NTl-v1-jC3"/>
+                    <constraint firstItem="SDc-hx-ldx" firstAttribute="leading" secondItem="ojA-HT-N0D" secondAttribute="trailing" constant="8" id="SeD-e6-0iN"/>
+                    <constraint firstAttribute="trailing" secondItem="E2j-R2-FlM" secondAttribute="trailing" constant="8" id="mtr-Eg-97R"/>
+                    <constraint firstItem="E2j-R2-FlM" firstAttribute="top" secondItem="SDc-hx-ldx" secondAttribute="bottom" constant="4" id="zmL-XQ-pjh"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="movieTitleLabel" destination="SDc-hx-ldx" id="f2w-tr-0Oz"/>
                 <outlet property="posterImageView" destination="ojA-HT-N0D" id="eA0-cQ-qK7"/>
+                <outlet property="releaseDateLabel" destination="E2j-R2-FlM" id="HQb-FF-zHU"/>
             </connections>
             <point key="canvasLocation" x="82.400000000000006" y="116.94152923538232"/>
         </tableViewCell>
