@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12264F8E220CFE5400D920C5 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12264F8D220CFE5400D920C5 /* MovieViewController.swift */; };
 		12264F93220D0B0B00D920C5 /* DateFormatterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12264F92220D0B0B00D920C5 /* DateFormatterHelper.swift */; };
+		12264F95220D2C7800D920C5 /* GenreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12264F94220D2C7800D920C5 /* GenreList.swift */; };
 		1263A86B220BB0BE00B8CF83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1263A86A220BB0BE00B8CF83 /* AppDelegate.swift */; };
 		1263A870220BB0BE00B8CF83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1263A86E220BB0BE00B8CF83 /* Main.storyboard */; };
 		1263A872220BB0BF00B8CF83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1263A871220BB0BF00B8CF83 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		0BB1F876A383D91CBB8E2F37 /* Pods_UpcomingMovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UpcomingMovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12264F8D220CFE5400D920C5 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		12264F92220D0B0B00D920C5 /* DateFormatterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterHelper.swift; sourceTree = "<group>"; };
+		12264F94220D2C7800D920C5 /* GenreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreList.swift; sourceTree = "<group>"; };
 		1263A867220BB0BE00B8CF83 /* UpcomingMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UpcomingMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1263A86A220BB0BE00B8CF83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1263A86F220BB0BE00B8CF83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				1263A883220BBA0F00B8CF83 /* UpcomingMovies.swift */,
 				1263A885220BBA1C00B8CF83 /* Movie.swift */,
 				1263A887220BBD1000B8CF83 /* Genre.swift */,
+				12264F94220D2C7800D920C5 /* GenreList.swift */,
 				1263A889220BBDA800B8CF83 /* Credits.swift */,
 				1263A88B220BBDF600B8CF83 /* Cast.swift */,
 				1263A88D220BBDFD00B8CF83 /* Crew.swift */,
@@ -320,6 +323,7 @@
 				1263A898220BC2E000B8CF83 /* UIImageViewExtension.swift in Sources */,
 				1263A88C220BBDF600B8CF83 /* Cast.swift in Sources */,
 				12264F93220D0B0B00D920C5 /* DateFormatterHelper.swift in Sources */,
+				12264F95220D2C7800D920C5 /* GenreList.swift in Sources */,
 				1263A884220BBA0F00B8CF83 /* UpcomingMovies.swift in Sources */,
 				1263A886220BBA1C00B8CF83 /* Movie.swift in Sources */,
 				1263A895220BC21C00B8CF83 /* HomeTableViewCell.swift in Sources */,

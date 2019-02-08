@@ -10,6 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
+    // MARK: - Outlets and Variables
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var homeTableView: UITableView!
     var movies = [Movie]()
@@ -20,23 +22,30 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var firstLoad = true
     var searchActive: Bool = false
     var filtered: [Movie] = []
+    var genreList: GenreList?
+    
+    // MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         
         if NetworkState.isConnected() {
             if self.firstLoad {
                 self.showLoading()
-                APIProvider.getUpcomingMovies(page: 1) { (results) in
-                    self.firstLoad = false
-                    self.movies = results.results ?? []
-                    self.totalPages = results.totalPages
-                    if self.totalPages! > 1 && self.movies.count > 0 {
-                        self.nextPage += 1
+                
+                APIProvider.getGenreList { (results) in
+                    self.genreList = results
+                    APIProvider.getUpcomingMovies(page: 1) { (results) in
+                        self.firstLoad = false
+                        self.movies = results.results ?? []
+                        self.totalPages = results.totalPages
+                        if self.totalPages! > 1 && self.movies.count > 0 {
+                            self.nextPage += 1
+                        }
+                        DispatchQueue.main.async {
+                            self.homeTableView.reloadData()
+                        }
+                        self.hideLoading()
                     }
-                    DispatchQueue.main.async {
-                        self.homeTableView.reloadData()
-                    }
-                    self.hideLoading()
                 }
             }
         } else {
@@ -118,7 +127,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // MARK: - Screen transition
+    // MARK: - Screen Transition
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMovieDetails" {

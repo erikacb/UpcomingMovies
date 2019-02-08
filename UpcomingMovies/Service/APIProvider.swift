@@ -47,4 +47,22 @@ class APIProvider {
         }
     }
     
+    static func getGenreList(completion: @escaping (GenreList)-> ()) {
+        provider.request(.genreList()) { (result) in
+            
+            switch result {
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode(GenreList.self, from: response.data)
+                    completion(results)
+                } catch let error {
+                    print(error)
+                }
+            case let .failure(error):
+                print(error)
+            }
+            
+        }
+    }
+    
 }

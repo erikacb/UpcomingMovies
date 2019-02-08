@@ -9,6 +9,8 @@
 import UIKit
 
 class MovieViewController: UIViewController {
+    
+    // MARK: - Outlets and Variables
 
     var movie: Movie?
     @IBOutlet weak var viewHeightConstraint: NSLayoutConstraint!
@@ -17,11 +19,15 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fillInfoChart(movie!)
         self.setViewHeightConstraint()
     }
+    
+    // MARK: - UIView Helpers
     
     func fillInfoChart(_ movie: Movie) {
         self.title = self.movie?.title
@@ -30,8 +36,6 @@ class MovieViewController: UIViewController {
         self.overviewLabel.text = movie.overview ?? "No overview available"
         self.releaseDateLabel.text = DateFormatterHelper.convertDate(movie.releaseDate ?? "No release date available")
     }
-    
-    // MARK: - UIView Helpers
     
     func setViewHeightConstraint() {
         let height = self.posterImageView.frame.height + self.overviewLabel.frame.height + 160
