@@ -28,10 +28,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         
+        UISearchController().isActive = false
+        
         if NetworkState.isConnected() {
             if self.firstLoad {
                 self.showLoading()
-                
                 APIProvider.getGenreList { (results) in
                     self.genreList = results
                     APIProvider.getUpcomingMovies(page: 1) { (results) in
@@ -58,7 +59,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         self.homeTableView.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
         self.homeTableView.separatorStyle = .none
-        
     }
     
     // MARK: - UITableView Methods
@@ -66,13 +66,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.searchActive {
             return filtered.count
+        } else {
+            return self.movies.count
         }
-        return self.movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.homeTableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
-        
         if self.searchActive {
             cell.setup(with: self.filtered[indexPath.row])
         } else {
@@ -108,6 +108,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        UISearchController().searchBar.resignFirstResponder()
         
         let movieDetails: Movie
         
@@ -178,7 +180,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchActive = true
+        if searchBar.text != "" {
+            self.searchActive = true
+        } else {
+            self.searchActive = false
+            self.homeTableView.reloadData()
+        }
+        
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -186,10 +194,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.filtered = []
         self.searchActive = false
+        self.homeTableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchActive = false
     }
+ 
 }
