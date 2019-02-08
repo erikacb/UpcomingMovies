@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12264F8E220CFE5400D920C5 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12264F8D220CFE5400D920C5 /* MovieViewController.swift */; };
+		12264F93220D0B0B00D920C5 /* DateFormatterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12264F92220D0B0B00D920C5 /* DateFormatterHelper.swift */; };
 		1263A86B220BB0BE00B8CF83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1263A86A220BB0BE00B8CF83 /* AppDelegate.swift */; };
 		1263A870220BB0BE00B8CF83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1263A86E220BB0BE00B8CF83 /* Main.storyboard */; };
 		1263A872220BB0BF00B8CF83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1263A871220BB0BF00B8CF83 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		00D3ACE495EA8154A49E45BE /* Pods-UpcomingMovies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UpcomingMovies.release.xcconfig"; path = "Pods/Target Support Files/Pods-UpcomingMovies/Pods-UpcomingMovies.release.xcconfig"; sourceTree = "<group>"; };
 		0BB1F876A383D91CBB8E2F37 /* Pods_UpcomingMovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UpcomingMovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12264F8D220CFE5400D920C5 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
+		12264F92220D0B0B00D920C5 /* DateFormatterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterHelper.swift; sourceTree = "<group>"; };
 		1263A867220BB0BE00B8CF83 /* UpcomingMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UpcomingMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1263A86A220BB0BE00B8CF83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1263A86F220BB0BE00B8CF83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12264F91220D0ACE00D920C5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				12264F92220D0B0B00D920C5 /* DateFormatterHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		1263A85E220BB0BE00B8CF83 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +104,7 @@
 				1263A87F220BB8BF00B8CF83 /* ViewControllers */,
 				1263A880220BB8D500B8CF83 /* Service */,
 				1263A87C220BB8A100B8CF83 /* Storyboards */,
+				12264F91220D0ACE00D920C5 /* Helpers */,
 				1263A899220BC5C100B8CF83 /* Extensions */,
 				1263A871220BB0BF00B8CF83 /* Assets.xcassets */,
 			);
@@ -133,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				1263A881220BB94B00B8CF83 /* HomeViewController.swift */,
+				12264F8D220CFE5400D920C5 /* MovieViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -300,10 +314,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				12A8EF2D220CF33F00640D0A /* NetworkState.swift in Sources */,
+				12264F8E220CFE5400D920C5 /* MovieViewController.swift in Sources */,
 				1263A88A220BBDA800B8CF83 /* Credits.swift in Sources */,
 				1263A86B220BB0BE00B8CF83 /* AppDelegate.swift in Sources */,
 				1263A898220BC2E000B8CF83 /* UIImageViewExtension.swift in Sources */,
 				1263A88C220BBDF600B8CF83 /* Cast.swift in Sources */,
+				12264F93220D0B0B00D920C5 /* DateFormatterHelper.swift in Sources */,
 				1263A884220BBA0F00B8CF83 /* UpcomingMovies.swift in Sources */,
 				1263A886220BBA1C00B8CF83 /* Movie.swift in Sources */,
 				1263A895220BC21C00B8CF83 /* HomeTableViewCell.swift in Sources */,

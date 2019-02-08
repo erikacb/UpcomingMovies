@@ -12,6 +12,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var homeTableView: UITableView!
     var movies = [Movie]()
+    var movie: Movie?
     let loading = UIActivityIndicatorView(style: .whiteLarge)
     var nextPage = 1
     var totalPages: Int?
@@ -93,6 +94,27 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("Device is not connected!")
             }
             
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if NetworkState.isConnected() {
+            self.showLoading()
+            APIProvider.getMovieDetailsWithCredits(id: self.movies[indexPath.row].id!) { (result) in
+                self.movie = result
+                self.hideLoading()
+                self.performSegue(withIdentifier: "showMovieDetails", sender: self)
+            }
+        }
+    }
+    
+    // MARK: - Screen transition
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMovieDetails" {
+            if let destinationViewController = segue.destination as? MovieViewController {
+                destinationViewController.movie = self.movie
+            }
         }
     }
     
