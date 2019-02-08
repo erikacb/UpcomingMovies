@@ -8,8 +8,9 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var homeTableView: UITableView!
     var movies = [Movie]()
     var movie: Movie?
@@ -17,6 +18,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var nextPage = 1
     var totalPages: Int?
     var firstLoad = true
+    var searchActive: Bool = false
+    var filtered: [Movie] = []
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -52,12 +55,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - UITableView Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.searchActive {
+            return filtered.count
+        }
         return self.movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.homeTableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
-        cell.setup(with: self.movies[indexPath.row])
+        
+        if self.searchActive {
+            cell.setup(with: self.filtered[indexPath.row])
+        } else {
+            cell.setup(with: self.movies[indexPath.row])
+        }
         return cell
     }
     
@@ -70,23 +81,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if NetworkState.isConnected() {
                 self.showLoading()
-                print("CURRENT PAGE TO BE LOADED: \(self.nextPage)")
                 APIProvider.getUpcomingMovies(page: self.nextPage) { (newResults) in
-                    print("MOVIES BEFORE: \(self.movies.count)")
-                    print("FIRST MOVIE BEFORE: \(self.movies.first?.title ?? "No title available")")
-                    print("LAST MOVIE BEFORE: \(self.movies.last?.title ?? "No title available")")
-                    print("FIRST MOVIE THAT WILL BE ADDED: \(newResults.results?.first?.title ?? "No title available")")
-                    print("LAST MOVIE THAT WILL BE ADDED: \(newResults.results?.last?.title ?? "No title available")")
                     self.movies += newResults.results ?? []
-                    print("MOVIES AFTER: \(self.movies.count)")
-                    print("FIRST MOVIE AFTER: \(self.movies.first?.title ?? "No title available")")
-                    print("LAST MOVIE AFTER: \(self.movies.last?.title ?? "No title available")")
                     DispatchQueue.main.async {
                         self.homeTableView.reloadData()
                     }
                     if newResults.totalPages! > 1 && self.nextPage < newResults.totalPages! && self.movies.count > 0 {
                         self.nextPage += 1
-                        print("NEXT PAGE TO BE LOADED: \(self.nextPage)")
                     }
                     self.hideLoading()
                 }
@@ -98,9 +99,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let movieDetails: Movie
+        
+        if self.searchActive {
+            movieDetails = self.filtered[indexPath.row]
+        } else {
+            movieDetails = self.movies[indexPath.row]
+        }
+        
         if NetworkState.isConnected() {
             self.showLoading()
-            APIProvider.getMovieDetailsWithCredits(id: self.movies[indexPath.row].id!) { (result) in
+            APIProvider.getMovieDetailsWithCredits(id: movieDetails.id!) { (result) in
                 self.movie = result
                 self.hideLoading()
                 self.performSegue(withIdentifier: "showMovieDetails", sender: self)
@@ -137,4 +147,40 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.loading.removeFromSuperview()
     }
     
+    // MARK: - Search Helpers
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        
+        self.filtered = self.movies.filter({ (text) -> Bool in
+            let tmp: NSString = text.title! as NSString
+            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+            return range.location != NSNotFound
+        })
+        
+        if self.filtered.count == 0 {
+            self.searchActive = false
+        } else {
+            self.searchActive = true
+        }
+        
+        self.homeTableView.reloadData()
+        
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchActive = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.searchActive = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchActive = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchActive = false
+    }
 }

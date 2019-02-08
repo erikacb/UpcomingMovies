@@ -18,8 +18,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="81z-Dm-Dc2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="bQw-gl-Y9J"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PrH-vR-eRN"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i0h-LN-pyN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="7el-zj-Syl"/>
@@ -29,9 +41,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="81z-Dm-Dc2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9p3-LM-Ndp"/>
+                            <constraint firstItem="81z-Dm-Dc2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Br7-HP-MQ2"/>
+                            <constraint firstItem="81z-Dm-Dc2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="swF-05-paT"/>
                             <constraint firstItem="i0h-LN-pyN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uxm-KJ-LjT"/>
-                            <constraint firstItem="i0h-LN-pyN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="w6H-f9-4vp"/>
-                            <constraint firstItem="i0h-LN-pyN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xLW-34-aYU"/>
+                            <constraint firstItem="i0h-LN-pyN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="7" id="w6H-f9-4vp"/>
+                            <constraint firstItem="i0h-LN-pyN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="xLW-34-aYU"/>
                             <constraint firstItem="i0h-LN-pyN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zf3-4x-Cea"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -39,6 +54,7 @@
                     <navigationItem key="navigationItem" title="Upcoming Movies" id="8Du-tE-ocu"/>
                     <connections>
                         <outlet property="homeTableView" destination="i0h-LN-pyN" id="bLt-iW-o5z"/>
+                        <outlet property="searchBar" destination="81z-Dm-Dc2" id="68T-J1-fcS"/>
                         <segue destination="5SX-4X-yCg" kind="show" identifier="showMovieDetails" id="Qm3-TA-d0y"/>
                     </connections>
                 </viewController>
