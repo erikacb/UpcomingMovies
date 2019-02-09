@@ -16,13 +16,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var homeTableView: UITableView!
     var movies = [Movie]()
     var movie: Movie?
+    var nextScreenMovieGenreIds: [Int]?
     let loading = UIActivityIndicatorView(style: .whiteLarge)
     var nextPage = 1
     var totalPages: Int?
     var firstLoad = true
     var searchActive: Bool = false
     var filtered: [Movie] = []
-    var genreList: GenreList?
+    var genreList = GenreList(genres: [])
     
     // MARK: - Lifecycle
     
@@ -74,9 +75,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.homeTableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
         if self.searchActive {
-            cell.setup(with: self.filtered[indexPath.row])
+            cell.setup(with: self.filtered[indexPath.row], and: self.genreList)
         } else {
-            cell.setup(with: self.movies[indexPath.row])
+            cell.setup(with: self.movies[indexPath.row], and: self.genreList)
         }
         return cell
     }
@@ -119,6 +120,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             movieDetails = self.movies[indexPath.row]
         }
         
+        self.nextScreenMovieGenreIds = movieDetails.genreIds ?? []
+        
         if NetworkState.isConnected() {
             self.showLoading()
             APIProvider.getMovieDetailsWithCredits(id: movieDetails.id!) { (result) in
@@ -135,6 +138,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "showMovieDetails" {
             if let destinationViewController = segue.destination as? MovieViewController {
                 destinationViewController.movie = self.movie
+                destinationViewController.genreIds = self.nextScreenMovieGenreIds
+                destinationViewController.genreList = self.genreList
             }
         }
     }

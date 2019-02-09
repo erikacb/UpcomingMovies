@@ -37,6 +37,12 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genres" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bt9-5f-KEC">
+                        <rect key="frame" x="158" y="61.5" width="191" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ojA-HT-N0D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1yQ-NK-5Mh"/>
@@ -45,7 +51,10 @@
                     <constraint firstItem="SDc-hx-ldx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="E0T-U5-Fgv"/>
                     <constraint firstItem="E2j-R2-FlM" firstAttribute="leading" secondItem="ojA-HT-N0D" secondAttribute="trailing" constant="8" id="E7b-qg-FCP"/>
                     <constraint firstAttribute="bottom" secondItem="ojA-HT-N0D" secondAttribute="bottom" id="NTl-v1-jC3"/>
+                    <constraint firstItem="Bt9-5f-KEC" firstAttribute="top" secondItem="E2j-R2-FlM" secondAttribute="bottom" constant="8" id="O1Y-Wq-aqn"/>
                     <constraint firstItem="SDc-hx-ldx" firstAttribute="leading" secondItem="ojA-HT-N0D" secondAttribute="trailing" constant="8" id="SeD-e6-0iN"/>
+                    <constraint firstItem="Bt9-5f-KEC" firstAttribute="leading" secondItem="ojA-HT-N0D" secondAttribute="trailing" constant="8" id="VjD-E8-Gxf"/>
+                    <constraint firstAttribute="trailing" secondItem="Bt9-5f-KEC" secondAttribute="trailing" constant="8" id="kie-Kn-Pf9"/>
                     <constraint firstAttribute="trailing" secondItem="E2j-R2-FlM" secondAttribute="trailing" constant="8" id="mtr-Eg-97R"/>
                     <constraint firstItem="E2j-R2-FlM" firstAttribute="top" secondItem="SDc-hx-ldx" secondAttribute="bottom" constant="4" id="zmL-XQ-pjh"/>
                 </constraints>
@@ -53,6 +62,7 @@
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="genresLabel" destination="Bt9-5f-KEC" id="TnH-6C-nSN"/>
                 <outlet property="movieTitleLabel" destination="SDc-hx-ldx" id="f2w-tr-0Oz"/>
                 <outlet property="posterImageView" destination="ojA-HT-N0D" id="eA0-cQ-qK7"/>
                 <outlet property="releaseDateLabel" destination="E2j-R2-FlM" id="HQb-FF-zHU"/>

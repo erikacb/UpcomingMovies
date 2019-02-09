@@ -13,6 +13,9 @@ class MovieViewController: UIViewController {
     // MARK: - Outlets and Variables
 
     var movie: Movie?
+    var genreIds: [Int]?
+    var genreList = GenreList(genres: [])
+    
     @IBOutlet weak var viewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var releaseDateLabel: UILabel!
@@ -35,6 +38,7 @@ class MovieViewController: UIViewController {
         self.posterImageView.load(.poster, from: movie.posterPath!)
         self.overviewLabel.text = movie.overview ?? "No overview available"
         self.releaseDateLabel.text = DateFormatterHelper.convertDate(movie.releaseDate ?? "No release date available")
+        self.genresLabel.text = GenresHelper.findGenres(for: self.genreIds ?? [], using: genreList)
     }
     
     func setViewHeightConstraint() {

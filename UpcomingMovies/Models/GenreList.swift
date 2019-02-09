@@ -12,6 +12,14 @@ struct GenreList: Decodable {
     
     let genres: [Genre]?
     
+    init(genres: [Genre]) {
+        if genres.count > 0 {
+            self.genres = genres
+        } else {
+            self.genres = []
+        }
+    }
+    
     enum CodingKeys: String, CodingKey {
         case genres = "genres"
     }
