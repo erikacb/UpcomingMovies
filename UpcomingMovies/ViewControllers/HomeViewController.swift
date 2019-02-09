@@ -12,8 +12,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Outlets and Variables
     
+    @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var homeTableView: UITableView!
+    
     var movies = [Movie]()
     var movie: Movie?
     var nextScreenMovieGenreIds: [Int]?
@@ -28,10 +30,27 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
-        
         UISearchController().isActive = false
-        
+        self.loadData()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.homeTableView.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
+        self.homeTableView.separatorStyle = .none
+    }
+    
+    // MARK: - Load data
+    
+    @IBAction func reloadData(_ sender: Any) {
+        self.reloadButton.isHidden = true
+        self.loadData()
+    }
+    
+    func loadData() {
         if NetworkState.isConnected() {
+            self.homeTableView.isHidden = false
+            self.searchBar.isHidden = false
             if self.firstLoad {
                 self.showLoading()
                 APIProvider.getGenreList { (results) in
@@ -51,15 +70,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         } else {
-            print("Device is not connected!")
+            self.reloadButton.isHidden = false
+            self.homeTableView.isHidden = true
+            self.searchBar.isHidden = true
         }
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.homeTableView.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
-        self.homeTableView.separatorStyle = .none
     }
     
     // MARK: - UITableView Methods
@@ -101,10 +115,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                     self.hideLoading()
                 }
-            } else {
-                print("Device is not connected!")
             }
-            
         }
     }
     

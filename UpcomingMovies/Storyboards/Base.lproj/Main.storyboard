@@ -30,6 +30,17 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="PrH-vR-eRN"/>
                                 </connections>
                             </searchBar>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agc-fL-8Xm">
+                                <rect key="frame" x="0.0" y="271.5" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="uxC-iS-akr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="CLICK TO RELOAD"/>
+                                <connections>
+                                    <action selector="reloadData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Di8-pF-5yJ"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i0h-LN-pyN">
                                 <rect key="frame" x="0.0" y="56" width="375" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -41,8 +52,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="agc-fL-8Xm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2NP-Bc-nQD"/>
                             <constraint firstItem="81z-Dm-Dc2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9p3-LM-Ndp"/>
                             <constraint firstItem="81z-Dm-Dc2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Br7-HP-MQ2"/>
+                            <constraint firstItem="agc-fL-8Xm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GNV-wV-geR"/>
+                            <constraint firstItem="agc-fL-8Xm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZUX-bt-7We"/>
                             <constraint firstItem="81z-Dm-Dc2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="swF-05-paT"/>
                             <constraint firstItem="i0h-LN-pyN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uxm-KJ-LjT"/>
                             <constraint firstItem="i0h-LN-pyN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="7" id="w6H-f9-4vp"/>
@@ -54,6 +68,7 @@
                     <navigationItem key="navigationItem" title="Upcoming Movies" id="8Du-tE-ocu"/>
                     <connections>
                         <outlet property="homeTableView" destination="i0h-LN-pyN" id="bLt-iW-o5z"/>
+                        <outlet property="reloadButton" destination="agc-fL-8Xm" id="kVg-Rv-hWg"/>
                         <outlet property="searchBar" destination="81z-Dm-Dc2" id="68T-J1-fcS"/>
                         <segue destination="5SX-4X-yCg" kind="show" identifier="showMovieDetails" id="Qm3-TA-d0y"/>
                     </connections>
